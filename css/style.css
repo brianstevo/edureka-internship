@@ -17,7 +17,7 @@
 	position: relative;
 }
 
-b {
+.hero-center b {
 	display: inline-block;
 	font-size: 46px;
 	line-height: 70px;
@@ -123,15 +123,29 @@ b {
 	height: 100%;
 }
 
-.second-card > h4 {
+.second-card>h4 {
 	margin-top: 30px;
 	padding: 0 15px;
 	margin-bottom: 10px;
 }
 
-.second-card > p {
+.second-card>p {
 	margin-top: 10px;
 	padding: 0 15px;
+}
+
+/*food details*/
+.header-logo {
+	display: inline-block;
+	font-size: 46px;
+	line-height: 70px;
+	text-align: center;
+	color: #ff0000;
+	background-color: white;
+	height: 70px;
+	width: 70px;
+	border-radius: 50%;
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -168,8 +182,7 @@ b {
 	}
 }
 
-@media only screen and (max-width: 768px) {
-}
+@media only screen and (max-width: 768px) {}
 
 @media only screen and (max-width: 1000px) {
 	.card-body {
