@@ -94,15 +94,14 @@
 }
 
 .card-body {
-	margin-top: 30px;
-	padding: 0 85px;
+	margin: 30px 55px;
 }
 
 .card {
 	display: inline-block;
 	margin: 20px;
-	max-width: 350px;
-	height: 160px;
+	max-width: 370px;
+	height: 150px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -125,29 +124,150 @@
 
 .second-card>h4 {
 	margin-top: 30px;
-	padding: 0 15px;
+	padding: 0 20px;
 	margin-bottom: 10px;
 }
 
 .second-card>p {
 	margin-top: 10px;
-	padding: 0 15px;
+	padding: 0 20px;
 }
 
 /*food details*/
+header {
+	background-color: #ce0505;
+	height: 80px;
+	position: relative;
+}
+
+header::after {
+	clear: both;
+}
+
 .header-logo {
-	display: inline-block;
-	font-size: 46px;
-	line-height: 70px;
+	/* display: inline-block; */
+	position: absolute;
+	top: 14px;
+	left: 7%;
+	font-size: 32px;
+	line-height: 52px;
 	text-align: center;
 	color: #ff0000;
 	background-color: white;
-	height: 70px;
-	width: 70px;
+	height: 52px;
+	width: 52px;
 	border-radius: 50%;
+}
+
+nav ul {
+	float: right;
+	margin-right: 7%;
+}
+
+nav li {
+	list-style: none;
+	display: inline;
+	line-height: 80px;
+	font-size: 16px;
+}
+
+nav li a {
+	font-weight: 500;
+	text-decoration: none;
+	color: white;
+}
+
+.create {
+	margin-left: 15px;
+	padding: 10px;
+	border-radius: 3px;
+	border: 1px solid white;
+}
+
+main {
+	max-width: 1140px;
+	margin: auto;
+}
+
+.img-container {
+	margin: 20px 0;
+	height: 350px;
+}
+
+.img-container img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 
 }
 
+.img-header h2 {
+	margin: 30px 0 30px 3%;
+	font-size: 28px;
+	font-weight: 500;
+}
+
+.tabs {
+	position: relative;
+	clear: both;
+	margin: 0 20px;
+}
+
+.tabs .tab {
+	float: left;
+	margin-right: 0px;
+}
+
+.tabs .tab a {
+	color: black;
+	position: relative;
+	display: inline-block;
+	text-decoration: none;
+	z-index: 2;
+	font-size: 18px;
+	font-weight: 600;
+	padding: 20px;
+}
+
+.content {
+
+	position: absolute;
+	background-color: white;
+	width: 100%;
+	left: 0px;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 20px;
+}
+
+.content h3 {
+	margin: 20px 0;
+}
+
+.content h4 {
+	margin: 15px 0;
+}
+
+/* .tabs .tab:nth-of-type(1) .content {
+	display: block;
+} */
+.display {
+	display: block;
+}
+
+.tab:target a {
+	font-weight: bold;
+	border-bottom: 1px solid orangered;
+}
+
+.tab:target .content {
+	display: block;
+}
+
+.tab:not(:target) .content {
+	display: none;
+}
+
+/*responsive*/
 @media only screen and (max-width: 600px) {
 	.hero-center input {
 		margin-top: 20px;
@@ -178,15 +298,23 @@
 	}
 
 	.card {
-		margin: 20px !important;
+		margin-right: 20px !important;
+	}
+
+	/* .img-container {
+		margin: 10px;
+	} */
+}
+
+@media only screen and (max-width: 768px) {
+	.card {
+		max-width: 350px;
 	}
 }
 
-@media only screen and (max-width: 768px) {}
-
 @media only screen and (max-width: 1000px) {
 	.card-body {
-		padding: 0;
+		margin: 30px 0;
 	}
 
 	.card {
