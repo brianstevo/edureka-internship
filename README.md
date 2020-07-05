@@ -1,1 +1,1 @@
-# edureka-internship
+demo app similar to zomato
