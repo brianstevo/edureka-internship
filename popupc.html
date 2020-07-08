@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		.carousel-container {
+			position: absolute;
+			top: 0px;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			transition: all 1s ease;
+			/* transform: translateX(100%); */
+		}
+
+		.img-container {
+			overflow: hidden;
+			margin: auto;
+			padding: 100px 50px 0 50px;
+			max-width: 800px;
+			height: 500px;
+			object-fit: contain;
+		}
+
+		.img-container img {
+			border-radius: 25px;
+			width: 100%;
+			height: 100%;
+		}
+
+		.img-gallery {
+			display: inline-block;
+			padding: 10px;
+			background-color: chocolate;
+			color: #192f60;
+		}
+
+		.img-group {
+			display: flex;
+		}
+
+		.not-active {
+			transition: all 1s ease;
+			display: none;
+		}
+
+		.cancel {
+			padding: 10px;
+			border: 1px solid white;
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			color: white;
+		}
+
+		@media only screen and (max-width: 600px) {
+			.img-container {
+				height: 450px;
+				padding: 160px 40px 0 40px !important;
+			}
+		}
+
+		@media only screen and (max-width: 900px) {
+			.img-container {
+				padding: 100px 100px 0 100px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="img-gallery">Click to see Image Gallery</div>
+	<div class="carousel-container not-active">
+		<div class="img-container">
+			<div class="img-group">
+				<img src="images/breakfast.png" alt="" />
+				<img src="images/breakfast.png" alt="" />
+			</div>
+			<div class="cancel">X</div>
+		</div>
+	</div>
+</body>
+<script>
+	const button = document.querySelector('.img-gallery');
+	let carouselContainer = document.querySelector('.carousel-container');
+	const cancel = document.querySelector('.cancel');
+
+	button.addEventListener('click', getCarousel);
+	cancel.addEventListener('click', removeCarousel);
+
+	function getCarousel() {
+		// carousel.setAttribute('style', 'display:block');
+		carouselContainer.classList.remove('not-active');
+		// carousel.setAttribute('style', 'transform: translateX(0%)');
+	}
+
+	function removeCarousel() {
+		carouselContainer.classList.add('not-active');
+		// carousel.setAttribute('style', 'display:none');
+		// carousel.setAttribute('style', 'transform: translateX(100%)');
+	}
+</script>
+
+</html>

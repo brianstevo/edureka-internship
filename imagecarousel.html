@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel {
+            -webkit-box-align: center;
+            align-items: center;
+            display: -webkit-box;
+            display: flex;
+            overflow: hidden;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            max-width: 500px;
+        }
+
+        .carousel__images {
+            -webkit-box-align: center;
+            align-items: center;
+            display: -webkit-box;
+            display: flex;
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            -webkit-transition: -webkit-transform 0.25s;
+            transition: -webkit-transform 0.25s;
+            transition: transform 0.25s;
+            transition: transform 0.25s, -webkit-transform 0.25s;
+        }
+
+        .carousel__images img {
+            border-radius: 5px;
+            height: 250px;
+            width: 250px;
+        }
+
+        .carousel__images img.active {
+            box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.25);
+            height: 400px;
+            width: 500px;
+            z-index: 1;
+        }
+
+        .carousel__button {
+            background: teal;
+            border: 0;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+            font-weight: bold;
+            height: 3rem;
+            opacity: 0.7;
+            position: absolute;
+            -webkit-transition: opacity 0.25s;
+            transition: opacity 0.25s;
+            width: 3rem;
+            z-index: 1;
+        }
+
+        .carousel__button.previous {
+            left: 5px;
+        }
+
+        .carousel__button.next {
+            right: 5px;
+        }
+
+        .carousel__button:hover {
+            opacity: 0.5;
+        }
+
+        .carousel-container {
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            transition: all 1s ease;
+            /* transform: translateX(100%); */
+        }
+
+        .img-gallery-button {
+            display: inline-block;
+            padding: 10px;
+            background-color: chocolate;
+            color: #192f60;
+        }
+
+        .not-active {
+            transition: all 1s ease;
+            display: none;
+        }
+
+        .cancel {
+            padding: 10px;
+            border: 1px solid white;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .active {
+                width: 90%;
+                padding: 0 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img-gallery-button">Click to see Image Gallery</div>
+    <div class="carousel-container not-active">
+        <div class="carousel">
+            <button class="carousel__button previous" id="previous">
+                < </button> <div class="carousel__images">
+                    <img class="active" src="images/breakfast.png" alt="">
+                    <img src="images/breakfast.png" alt="">
+                    <img src="images/breakfast.png" alt="">
+                    <img src="images/breakfast.png" alt="">
+                    <img src="images/breakfast.png" alt="">
+        </div>
+        <button class="carousel__button next" id="next">></button>
+    </div>
+    <div class="cancel">X</div>
+</body>
+<script>
+    const carouselImages = document.querySelector('.carousel__images');
+    const images = document.querySelectorAll('.carousel__images img');
+    const carouselButtons = document.querySelectorAll('.carousel__button');
+    const numberOfImages = document.querySelectorAll('.carousel__images img').length;
+    const button = document.querySelector('.img-gallery-button');
+    let carouselContainer = document.querySelector('.carousel-container');
+    const cancel = document.querySelector('.cancel');
+
+    button.addEventListener('click', getCarousel);
+    cancel.addEventListener('click', removeCarousel);
+
+    function getCarousel() {
+        // carousel.setAttribute('style', 'display:block');
+        carouselContainer.classList.remove('not-active');
+        // carousel.setAttribute('style', 'transform: translateX(0%)');
+    }
+
+    function removeCarousel() {
+        carouselContainer.classList.add('not-active');
+        // carousel.setAttribute('style', 'display:none');
+        // carousel.setAttribute('style', 'transform: translateX(100%)');
+    }
+    let imageIndex = 1;
+    let translateX = 0;
+
+    carouselButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            if (event.target.id === 'previous') {
+                if (imageIndex !== 1) {
+                    imageIndex--;
+                    translateX += 250;
+                }
+            } else {
+                if (imageIndex !== numberOfImages) {
+                    imageIndex++;
+                    translateX -= 250;
+                }
+            }
+
+            carouselImages.style.transform = `translateX(${translateX}px)`;
+            images.forEach((image, index) => {
+                if (index === imageIndex - 1) {
+                    image.classList.add('active');
+                } else {
+                    image.classList.remove('active');
+                }
+            });
+        });
+    });
+</script>
+
+</html>
